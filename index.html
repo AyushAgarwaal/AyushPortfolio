@@ -409,29 +409,35 @@
                 const message = document.getElementById("message").value;
 
                 if (name !== "" && email !== "" && message !== "") {
-                    Email.send({
-                        Host: "smtp.elasticemail.com",
-                        Username: "agarwalayush647@gmail.com",
-                        Password: "78037FAE0318FB8584DE3DAFD69E5FFD171E",
-                        To: "agarwalayush647@gmail.com",
-                        From: "agarwalayush647@gmail.com",
-                        Subject: "Portfolio Contact Email",
-                        Body: `
-                            Name: ${name}
-                            Email: ${email}
-                            Message: ${message}
-                        `
-                    }).then(
-                        message => swal("Thanks! for sending the message. I will contact you shortly.", "", "success")
-                    );
-                } else {
-                    swal("Something's wrong. Please fill in all the required fields and try again.", "", "warning");
+                    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        Email.send({
+                            Host: "smtp.elasticemail.com",
+                            Username: "agarwalayush647@gmail.com",
+                            Password: "78037FAE0318FB8584DE3DAFD69E5FFD171E",
+                            To: "agarwalayush647@gmail.com",
+                            From: "agarwalayush647@gmail.com",
+                            Subject: "Portfolio Contact Email",
+                            Body: `
+                                Name: ${name}
+                                Email: ${email}
+                                Message: ${message}
+                            `
+                        }).then(
+                            message => swal("Thanks! for sending the message. I will contact you shortly.", "", "success")
+                        );
+                    }
+                    else {
+                        swal("Something's wrong. Please fill in all the required fields and try again.", "", "warning");
+                    }
                 }
-            } catch (error) {
+                else {
+                    swal("Please fill in all the required fields.", "", "warning");
+                }
+            }
+            catch (error) {
                 console.log(error);
             }
-        }
-
+        };
 
 
 
