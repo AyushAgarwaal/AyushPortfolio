@@ -72,7 +72,11 @@ nav ul li a:hover {
 }
 
 .firstSection>div {
-    width: 30%;
+/*        width: 30%; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -206,9 +210,11 @@ nav ul li a:hover {
 }
 
 .socialMedia {
-    display: flex;
+      display: flex;
     margin-top: 55px;
     margin-left: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .socialMedia a {
